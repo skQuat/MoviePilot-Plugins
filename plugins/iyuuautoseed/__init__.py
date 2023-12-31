@@ -894,6 +894,8 @@ class IYUUAutoSeed(_PluginBase):
                 return True
             if "totheglory.im" in url:
                 return True
+            if "pterclub.com" in url:
+                return True
             return False
 
         try:

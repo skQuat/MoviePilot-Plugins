@@ -771,6 +771,10 @@ class IYUUAutoSeed(_PluginBase):
         torrent_url = self.__get_download_url(seed=seed,
                                               site=site_info,
                                               base_url=download_page)
+        # # Add a "/" after "pterclub.com".
+        if "pterclub.com" in url:
+            index = url.find("pterclub.com")
+            url = url[:index + len("pterclub.com")] + "/" + url[index + len("pterclub.com"):]
         if not torrent_url:
             # 加入失败缓存
             self._error_caches.append(seed.get("info_hash"))
@@ -893,8 +897,6 @@ class IYUUAutoSeed(_PluginBase):
             if "hdcity.in" in url:
                 return True
             if "totheglory.im" in url:
-                return True
-            if "pterclub.com" in url:
                 return True
             return False
 
